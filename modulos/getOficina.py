@@ -28,16 +28,17 @@ def getAllOficinaCiudad(codigoOfi):
     oficinaC = list()
     for val in of.oficina:
       if (val.get('ciudad') == ciudad):
-        oficinaCodigo.append({
+        oficinaC.append({
           "Codigo": val.get('codigo_oficina'),
           "Origen": f"({val.get('pais')} {val.get('region')} {val.get('ciudad')} {val.get('codigo_postal')})",
           "Telefono": val.get('telefono'),
           "Direcciones":  f"({val.get('linea_direccion1')} {val.get('linea_direccion2')})"
           
         })
-    return oficinaCodigo   
+    return oficinaC   
   
-def menu():
+if(__name__== "__main__"):
+  while True:
     print(""" 
           
                ___                       _                   _       
@@ -50,9 +51,10 @@ def menu():
                      / _ \|  _|| |/ _|| || ' \ / _` |                       
                      \___/|_|  |_|\__||_||_||_|\__,_|   
                                                   
-  1.Obtener los clientes por el codigo y la ciudad  
+  1.Obtener la oficina por el codigo y la ciudad  
   2.Ingrese la ciudad y le daremos los telefonos encontrados
-  3.obtener la informacion completa de un cliente segun su codigo
+  3.obtener la informacion completa de una oficina segun su codigo
+  0.salir
           """)
     opcion = int(input("\nSelecione una de las opciones : "))
     if(opcion == 1):
@@ -63,3 +65,5 @@ def menu():
     elif(opcion == 3): 
         ciudad = float(input("Ingrese el codigo de la oficina: "))
         print(tabulate(getAllOficinaCiudad(ciudad),headers= "keys", tablefmt="github"))
+    elif(opcion == 0):
+         break 

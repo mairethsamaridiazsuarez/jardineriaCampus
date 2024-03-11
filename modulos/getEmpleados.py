@@ -48,3 +48,22 @@ def getAllNombreApellidosPuestoEmailJefeEmpresa():
             )
     return nombreApellidosPuestoEmailJefeEmpresa
         
+def menu():
+    print(""" 
+          
+          
+                ___                   _               _     
+                | _ \___ _ __  ___ _ _| |_ ___ ___  __| |___ 
+                |   / -_) '_ \/ _ \ '_|  _/ -_|_-< / _` / -_)
+                |_|_\___| .__/\___/_|  \__\___/__/ \__,_\___|
+                ___ _ |_| _ __| |___ __ _ __| |___ ___     
+                / -_) '  \| '_ \ / -_) _` / _` / _ (_-<     
+                \___|_|_|_| .__/_\___\__,_\__,_\___/__/     
+                            |_|                               
+                            
+                            1.Obtener todod los clientes(codigo,nombre)
+                            2.obtener los datos del empleado segun su extencion
+                            3.
+
+          
+          """)
