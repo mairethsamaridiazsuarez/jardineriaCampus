@@ -1,27 +1,28 @@
 import storage.empleado as em
 
-#listado con nombre apeelido y email cuyo codigo de jefe es siete
+#3.listado con nombre apellido y email de empleados cuyo jefe tiene un codigo de jefe igual a 7
 def getAllNombreApellidoEmailJefe(codigo):
     nombreApellidoEmail =[]
     for val in em.empleados:
-        if(val.get("codigo-jefe")==codigo):
+        if(val.get("codigo-jefe")==7):
             nombreApellidoEmail.append(
                 {
                     "nombre":val.get("nombre"),
                     "apellidos": f"{val.get('apellido1')}{val.get('apellido2')}",
                     "email": val.get("email"),
                     "codigo" : val.get("codigo_jefe"),
-                    "jefe":val.get("codigo_jefe")
-                    
+                    "jefe":val.get("codigo_jefe")       
                 }
             )
     return nombreApellidoEmail
 
+#5.listado con el nombre apellidos y puesto de aquellos empleados que no sean representantes de ventas
+
 def getAllNombreApellidoPuestoEmail(puesto):
-    NombreApellidoPuestoEmail =[]
+    nombreApellPuestoEmail =[]
     for val in em.empleados:
         if (val.get("puesto"))!="Representante Ventas":
-            NombreApellidoPuestoEmail.append(
+            nombreApellPuestoEmail.append(
             {
                     "nombre": val.get("nombre"),
                     "apellidos": f"{val.get('apellido1')}{val.get('apellido2')}",
@@ -29,15 +30,15 @@ def getAllNombreApellidoPuestoEmail(puesto):
                     "puesto": val.get("puesto") 
             }
         )
-    return NombreApellidoPuestoEmail
+    return nombreApellPuestoEmail
 
-#devuelve el nombre, apellidos puesto email, del jefe de la empresa
+#4.devuelve el nombre, apellidos puesto email, del jefe de la empresa
 
 def getAllNombreApellidosPuestoEmailJefeEmpresa():
-    nombreApellidosPuestoEmailJefeEmpresa =[]
+    nomApePuestoEmailJefe =[]
     for val in em.empleados:
         if (val.get("codigo_jefe"))== 3 and (val.get("Director Oficina")):
-            nombreApellidosPuestoEmailJefeEmpresa.append(
+            nomApePuestoEmailJefe.append(
                 {
                         "nombre": val.get("nombre"),
                         "apellidos": f"{val.get('apellido1')} {val.get('apellido2')}",
@@ -46,24 +47,24 @@ def getAllNombreApellidosPuestoEmailJefeEmpresa():
                         "puesto": val.get("puesto")
                 }
             )
-    return nombreApellidosPuestoEmailJefeEmpresa
+    return nomApePuestoEmailJefe
         
-def menu():
-    print(""" 
+# def menu():
+#     print(""" 
           
           
-                ___                   _               _     
-                | _ \___ _ __  ___ _ _| |_ ___ ___  __| |___ 
-                |   / -_) '_ \/ _ \ '_|  _/ -_|_-< / _` / -_)
-                |_|_\___| .__/\___/_|  \__\___/__/ \__,_\___|
-                ___ _ |_| _ __| |___ __ _ __| |___ ___     
-                / -_) '  \| '_ \ / -_) _` / _` / _ (_-<     
-                \___|_|_|_| .__/_\___\__,_\__,_\___/__/     
-                            |_|                               
+#                 ___                   _               _     
+#                 | _ \___ _ __  ___ _ _| |_ ___ ___  __| |___ 
+#                 |   / -_) '_ \/ _ \ '_|  _/ -_|_-< / _` / -_)
+#                 |_|_\___| .__/\___/_|  \__\___/__/ \__,_\___|
+#                 ___ _ |_| _ __| |___ __ _ __| |___ ___     
+#                 / -_) '  \| '_ \ / -_) _` / _` / _ (_-<     
+#                 \___|_|_|_| .__/_\___\__,_\__,_\___/__/     
+#                             |_|                               
                             
-                            1.Obtener todod los clientes(codigo,nombre)
-                            2.obtener los datos del empleado segun su extencion
-                            3.
+#                             1.Obtener todod los clientes(codigo,nombre)
+#                             2.obtener los datos del empleado segun su extencion
+#                             3.
 
           
-          """)
+#           """)

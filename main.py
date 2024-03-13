@@ -4,6 +4,9 @@ import sys
 import modulos.getClient as cliente
 import modulos.getOficina as oficina
 import modulos.getEmpleados as empleado
+import modulos.getProducto as producto
+
+    
 
 if(__name__== "__main__"):
     while True:
@@ -18,7 +21,7 @@ if(__name__== "__main__"):
                                                                 1. cliente
                                                                 2. oficina   
                                                                 3. empleados
-                                                                4. pedidos  
+                                                                4. producto  
                                                                 0. salir                                                       
 """ )
         opcion = int(input("\n seleccione una de las opciones: "))
@@ -27,7 +30,9 @@ if(__name__== "__main__"):
         elif(opcion==2):
             oficina.menu()
         elif(opcion==3):
-            empleado.menu()   
+            empleado.menu()  
+        elif opcion == 4:
+            producto.menu() 
         elif(opcion==0):
             break
   
