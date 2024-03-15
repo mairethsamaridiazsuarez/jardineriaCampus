@@ -1,5 +1,7 @@
 import storage.pedido as pe
 from datetime import datetime
+from tabulate import tabulate
+
 #7. listado con los distintos estados que puede pasar un pedido
 def getAllEstadosDePedido():
     estadoPedido = []
@@ -11,8 +13,7 @@ def getAllEstadosDePedido():
         })      
     return estadoPedido
 
-#9.listado con el codigo de pedido , codigo de cliente, fecha esperada y 
-# fecha de entrega de los pedidos que no han sido entregados a tiempo
+#9.listado con el codigo de pedido , codigo de cliente, fecha esperada y fecha de entrega de los pedidos que no han sido entregados a tiempo
 
 def getAllCodigoEsperadaEntregaPedido():
     estadoPedidoCodigo = []
@@ -57,4 +58,54 @@ def getAllCodiPediMen2():
     return listadoPedidos
 
 #11.listado de todos los pedidos rechazados en 2009
+def getAllPedidosRechazados():
+    pedidosRechazados = []
+    for pedido in pe.pedido:
+        if pedido.get("estado") == "Rechazado" and pedido.get("fecha_esperada") is not None:
+            fecha_esperada = datetime.strptime(pedido.get("fecha_esperada"), "%Y-%m-%d") 
+            if fecha_esperada.year == 2009:
+                pedidosRechazados.append({
+                    "codigo_pedido": pedido.get("codigo_pedido"),
+                    "fecha_esperada": pedido.get("fecha_esperada")
+                }) 
+    return pedidosRechazados
+
+def menu():
+  while True:
+    print(""" 
+          
+                                ___                   _               _      
+                                | _ \___ _ __  ___ _ _| |_ ___ ___  __| |___  
+                                |   / -_) '_ \/ _ \ '_|  _/ -_|_-< / _` / -_) 
+                                |_|_\___| .__/\___/_|_ \__\___/__/ \__,_\___| 
+                                _ __  _|_|__| (_)__| |___ ___                
+                                | '_ \/ -_) _` | / _` / _ (_-<                
+                                | .__/\___\__,_|_\__,_\___/__/                
+                                |_|                                            
+                                                  
+  1.Estados por los que pasa el pedido
+  2.Informacion de los pedidos que no han sido entregados a tiempo
+  3.Informacion de los pedidos que han sido entregados con al menos dos dias de antelacion
+  4.Codigo de los pedidos rechazados
+  0.salir
+          """)
+    opcion = int(input("\nSelecione una de las opciones : "))
+    
+    if(opcion == 1):
+        print(tabulate(getAllEstadosDePedido(), headers="keys",tablefmt="github"))
+        
+    elif(opcion == 2):
+        codigo_pedido = int(input("Ingrese el codigo del pedido : "))
+        print(tabulate(getAllCodigoEsperadaEntregaPedido(), headers="keys",tablefmt="github"))
+        
+    elif(opcion == 3): 
+        codigoPedido = int(input("Ingrese el codigo del pedido: "))
+        print(tabulate(getAllCodiPediMen2(),headers= "keys", tablefmt="github"))
+        
+    if(opcion == 4):
+        print(tabulate(getAllPedidosRechazados(), headers="keys", tablefmt="github"))
+        
+    elif(opcion == 0):
+         break 
+     
 
