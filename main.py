@@ -1,6 +1,6 @@
 
-from tabulate import tabulate
-import sys
+#from tabulate import tabulate
+#import sys
 import modulos.getClient as cliente
 import modulos.getOficina as oficina
 import modulos.getEmpleados as empleado
@@ -8,8 +8,6 @@ import modulos.getProducto as producto
 import modulos.getPedidos as pedido
 import modulos.getPago as pago
 
-
-    
 
 if(__name__== "__main__"):
     while True:
