@@ -31,7 +31,7 @@ def getAllStocksPriceGama(gama , stock):
                 "Proveedor": val.get("proveedor"), 
                 "Descripcion": f'{val.get("descripcion")[:5]}...' if condiciones [i].get("descripcion") else None,
                 "Stock": val.get("cantidad_en_stock"),
-                 "base": val.get("precio_proveedor")         
+                "base": val.get("precio_proveedor")         
             }
     return condiciones
 
@@ -39,14 +39,12 @@ def menu():
     while True:
         print("""
                       
-  _____                       _             _                            _            _        
- |  __ \                     | |           | |                          | |          | |       
- | |__) |___ _ __   ___  _ __| |_ ___    __| | ___   _ __  _ __ ___   __| |_   _  ___| |_ ___  
- |  _  // _ \ '_ \ / _ \| '__| __/ _ \  / _` |/ _ \ | '_ \| '__/ _ \ / _` | | | |/ __| __/ _ \ 
- | | \ \  __/ |_) | (_) | |  | ||  __/ | (_| |  __/ | |_) | | | (_) | (_| | |_| | (__| || (_) |
- |_|  \_\___| .__/ \___/|_|   \__\___|  \__,_|\___| | .__/|_|  \___/ \__,_|\__,_|\___|\__\___/ 
-            | |                                     | |                                        
-            |_|                                     |_|                                        
+
+                     ___                   _            _                        _         _       
+                    | _ \___ _ __  ___ _ _| |_ ___   __| |___   _ __ _ _ ___  __| |_  _ __| |_ ___ 
+                    |   / -_) '_ \/ _ \ '_|  _/ -_) / _` / -_) | '_ \ '_/ _ \/ _` | || / _|  _/ _ \
+                    |_|_\___| .__/\___/_|  \__\___| \__,_\___| | .__/_| \___/\__,_|\_,_\__|\__\___/
+                            |_|                                |_|                                 
 
 
                                         1. Obtener la gama y el stock mayor a 100
@@ -69,13 +67,13 @@ def menu():
                 "dimensiones": input("ingrese las dimenciones del producto : "),
                 "proveedor": input("ingrese el proveedor del producto : "),
                 "descripcion": input("ingrese la descripcion del producto :"),
-                "cantidad_en_stock": input("ingrse la cantidad en stock : "),
-                "precio_venta": input("ingrese el precio de venta : "),
-                "precio_proveedor": input("ingrese el precio del proveedor : ")
+                "cantidad_en_stock": int(input("ingrse la cantidad en stock : ")),
+                "precio_venta": int(input("ingrese el precio de venta : ")),
+                "precio_proveedor": int(input("ingrese el precio del proveedor : "))
             }
             psProducto.postProducto(producto)
             print("producto guardado: ")
           
         elif(opcion == 0):
-         break 
+            break 
 
