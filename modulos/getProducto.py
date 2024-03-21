@@ -1,10 +1,10 @@
 from tabulate import tabulate
 #import json
+import os
 import requests
 import modulos.postProducto as  psProducto
- #devuelve un listado con los productos que pertenecen a la gama ornamentales
- #y que tien emas de 100 unidades en stock .El listado debera estar ordenado 
- # por su precio de venta, mostrando en primer lugar  los de mayor precio
+
+ #devuelve un listado con los productos que pertenecen a la gama ornamentales y que tien emas de 100 unidades en stock .El listado debera estar ordenado por su precio de venta, mostrando en primer lugar  los de mayor precio
 
 #json-server storage/producto.json -b 5001
 
@@ -37,6 +37,7 @@ def getAllStocksPriceGama(gama , stock):
 
 def menu():
     while True:
+        os.system("clear")
         print("""
                       
 
@@ -47,10 +48,8 @@ def menu():
                             |_|                                |_|                                 
 
 
-                                        1. Obtener la gama y el stock mayor a 100
-                                        2. Guardar
-                                        0. Salir
-                                        
+    1. Obtener todos los productos de una categoría ordenando sus precios de venta, también que su cantidad de inventario sea superior (ejem: Ornamentales, 100 )
+    0. Salir                              
               """)
         opcion = int(input("Seleccione una opcion : "))
         
@@ -58,22 +57,6 @@ def menu():
             tipoGama = input("Ingrese la gama que deseas filtrar: ")
             stock = int(input("Ingrese las unidades que deceas mostrar : "))
             print(tabulate(getAllStocksPriceGama(tipoGama, stock), headers="keys", tablefmt="github"))
-            
-        elif(opcion == 2):
-            producto = {
-                "codigo_producto": input("ingrese el codigo del producto : "),
-                "nombre": input("ingrese el nombre del producto : "),
-                "gama": input("ingrese la gama del producto : "),
-                "dimensiones": input("ingrese las dimenciones del producto : "),
-                "proveedor": input("ingrese el proveedor del producto : "),
-                "descripcion": input("ingrese la descripcion del producto :"),
-                "cantidad_en_stock": int(input("ingrse la cantidad en stock : ")),
-                "precio_venta": int(input("ingrese el precio de venta : ")),
-                "precio_proveedor": int(input("ingrese el precio del proveedor : "))
-            }
-            psProducto.postProducto(producto)
-            print("producto guardado: ")
-          
         elif(opcion == 0):
             break 
 
